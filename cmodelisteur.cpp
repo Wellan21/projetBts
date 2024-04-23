@@ -168,7 +168,9 @@ int Cmodelisateur::camp(int nbImage, const char *iPiece, const char *date)
                 }
                         } 
                         // rajouter retour esp 
-                  if (self->envoiRequeteSocket(("p." + std::to_string(posEsp) + ".0").c_str());)
+                  if (!(self->envoiRequeteSocket(("p." + std::to_string(posEsp) + ".0").c_str());)){
+                        return 4 ; 
+                  }
 
             else
             {
