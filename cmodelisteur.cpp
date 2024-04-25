@@ -11,17 +11,17 @@
 Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp)
 {
     // Initialisation des attributs de la classe
-    self->pinCapteur = pinCapteur;
-    self->pinSteep = pinSteep;
-    self->pinDirection = pinDir;
-    self->pathDB = pathDB;
-    self->nbPasMaxEsp = nbPasMaxEsp;
-    self->nbPasMaxRasp = nbPasMaxRasp;
+    this->pinCapteur = pinCapteur;
+    this->pinSteep = pinSteep;
+    this->pinDirection = pinDir;
+    this->pathDB = pathDB;
+    this->nbPasMaxEsp = nbPasMaxEsp;
+    this->nbPasMaxRasp = nbPasMaxRasp;
 
     // Configuration des broches
-    pinMode(self->pinSteep, OUTPUT);
-    pinMode(self->pinDirection, OUTPUT);
-    pinMode(self->pinCapteur, INPUT);
+    pinMode(this->pinSteep, OUTPUT);
+    pinMode(this->pinDirection, OUTPUT);
+    pinMode(this->pinCapteur, INPUT);
 }
 
 // Méthode pour écrire dans la base de données SQLite
@@ -71,14 +71,14 @@ void Cmodelisateur::deplacerMot(int nbpas, int dir)
 {
     wiringPisetup();
 
-    pinMode(self->pinSteep, OUTPUT);
+    pinMode(this->pinSteep, OUTPUT);
     pinMode(DIR, OUTPUT);
-    digitalWrite(self->pinDirection, dir);
+    digitalWrite(this->pinDirection, dir);
     for (int i = 0; i < nbpas; i++)
     {
-        digitalWrite(self->pinSteep, HIGH); // Activé
+        digitalWrite(this->pinSteep, HIGH); // Activé
         delay(5);                           //
-        digitalWrite(self->pinSteep, LOW);  // Désactivé
+        digitalWrite(this->pinSteep, LOW);  // Désactivé
         delay(5);
     }
     return;
@@ -87,11 +87,11 @@ void Cmodelisateur::deplacerMot(int nbpas, int dir)
 // Méthode pour initialiser le système
 int Cmodelisateur::initSys()
 {
-    while (digitalRead(self->pinCapteur))
+    while (digitalRead(this->pinCapteur))
     {
-        digitalWrite(self->pinSteep, HIGH); // Activé
+        digitalWrite(this->pinSteep, HIGH); // Activé
         delay(5);                           //
-        digitalWrite(self->pinSteep, LOW);  // Désactivé
+        digitalWrite(this->pinSteep, LOW);  // Désactivé
         delay(5);
     }
 }
@@ -143,15 +143,15 @@ int Cmodelisateur::camp(int nbImage, const char *iPiece, const char *date)
         for (int i = 0; i < (nbpasmax); i += intervalleRasp)
         {
             posEsp=0; 
-            if (self->deplacerMot(i, 1);)
+            if (this->deplacerMot(i, 1);)
             {
 
                 for (int j = 0; j < (nbpasmax - intervalle); j += intervalleEp)
                 {
-                    if (self->envoiRequeteSocket(("p." + std::to_string(j) + ".1").c_str());)
+                    if (this->envoiRequeteSocket(("p." + std::to_string(j) + ".1").c_str());)
                     {
                         posEsp= j; 
-                        if (self->prendrePhoto((dossier + "/" + cpt).c_str()))
+                        if (this->prendrePhoto((dossier + "/" + cpt).c_str()))
                         {
 
                             cpt++;
@@ -168,7 +168,7 @@ int Cmodelisateur::camp(int nbImage, const char *iPiece, const char *date)
                 }
                         } 
                         // rajouter retour esp 
-                  if (!(self->envoiRequeteSocket(("p." + std::to_string(posEsp) + ".0").c_str());)){
+                  if (!(this->envoiRequeteSocket(("p." + std::to_string(posEsp) + ".0").c_str());)){
                         return 4 ; 
                   }
 
