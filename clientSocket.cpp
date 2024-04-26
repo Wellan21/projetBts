@@ -4,7 +4,11 @@
         this->ip = ipSrv;
         this->port = portsrv;
     }
-
+clientSocket(){
+      this->ip ="1.1.1.1";
+        this->port = 80;
+    }
+}
     bool envoyerMessage(const char* msg) {
         /* Déclaration des variables */
         int sockfd_client;

@@ -16,6 +16,7 @@ int port;
 public : 
 bool envoyerMessage(const char* msg); 
 clientSocket(const char ipSrv , int portsrv)
+clientSocket()
 }
 
 #endif 

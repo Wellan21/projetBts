@@ -8,7 +8,7 @@
 #include <math.h>
 
 // Constructeur
-Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp)
+Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp,  const char ip, int port)
 {
     // Initialisation des attributs de la classe
     this->pinCapteur = pinCapteur;
@@ -17,8 +17,8 @@ Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const cha
     this->pathDB = pathDB;
     this->nbPasMaxEsp = nbPasMaxEsp;
     this->nbPasMaxRasp = nbPasMaxRasp;
-
-    // Configuration des broches
+    this->client=clientSocket(ip,port) 
+        // Configuration des broches
     pinMode(this->pinSteep, OUTPUT);
     pinMode(this->pinDirection, OUTPUT);
     pinMode(this->pinCapteur, INPUT);
