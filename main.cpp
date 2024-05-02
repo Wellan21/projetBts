@@ -1,3 +1,5 @@
+// main.cpp 
+// Marcoux Tristan Avril 2024 
 #include "cmodelisteur.h" 
 #include <iostream>
 #include <sys/types.h>
@@ -9,8 +11,19 @@
 #include <cstdlib>
 #include <string>
 #include <chrono>
+
+// Definition des pins Raspberry  
+#define	STEEP 12 // MOSI 
+#define	DIR	11 // CE1
+#define CAPTEUR 17
+#define DB "/www/BDD_demonstrateur.db" //Chemin d'accès BDD 
+#define PASRASP 512 //nombre de pas max Raspberry 
+#define PASESP  512 // Nombre de pas max esp32 
+#define IP "192.168.1.2" // ip ESP32
+#define PORT "5546" // port serveur ESP32 
+
 using namespace std;
-using namespace std::chrono;
+
 
 int main() {
     /* Déclaration des variables */
@@ -23,7 +36,9 @@ int main() {
     char nbImgChar[3];
     char idPieceChar[3];
     int nbImgInt = 0;
-    Cmodelisateur modelisateur()
+    char date [20]; 
+    int resultat; 
+    Cmodelisateur modelisateur(CAPTEUR,STEEP, DIR,DB,PASRASP, PASESP, IP , PORT) ; 
     
     /* Création du socket pour le serveur */
     sockfd_ecoute = socket(AF_INET, SOCK_STREAM, 0);
@@ -58,7 +73,7 @@ int main() {
                 std::cout << "Chaîne reçue du client : " << buffer << std::endl;
 
                 if (strcmp(buffer, "!init") == 0) {
-                    std::cout << "init" << std::endl;
+                    modelisateur.init(); 
                 }
                 else {
                     char *token = strtok(buffer, ".");
@@ -85,7 +100,10 @@ int main() {
                                          nbImgInt=50; 
                                          
                                     }
-                                 
+                                    if (token  !nullptr){
+                                        strcpy(date, token);
+                                         resultat = modelisateur.camp(nbImgInt,idPieceChar,date); 
+                                    }
                                    
 
                                     // Print nbImgInt
@@ -112,6 +130,7 @@ int main() {
                 char error = '0';
                 write(sockfd_service, &error, sizeof(error));
             }
+            write(sockfd_service, &resultat, sizeof(resultat));
             /* Fermeture de la connexion */
             close(sockfd_service);
         } 

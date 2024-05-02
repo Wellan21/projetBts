@@ -91,7 +91,7 @@ int Cmodelisateur::initSys()
     {
         digitalWrite(this->pinSteep, HIGH); // Activé
         delay(5);                           //
-        digitalWrite(this->pinSteep, LOW);  // Désactivé
+        digitalWrite(this->pinSteep, LOW);  // Désactivé 
         delay(5);
     }
 }
@@ -102,7 +102,7 @@ int Cmodelisateur::envoiRequeteSocket(const char *requete)
     return client.envoiMess(requete);
 }
 int Cmodelisateur : prendrePhoto(std::string *nomphoto)
-{
+{   
     string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test" + nomPhoto + ".jpg";
     return system(command.c_str());
 }
@@ -121,11 +121,12 @@ int Cmodelisateur::init()
 }
 
 // Méthode pour réaliser une campagne de photos
-int Cmodelisateur::camp(int nbImage, const char *iPiece, const char *date)
+int Cmodelisateur::camp(int nbImage, const char *idPiece, const char *date)
 {
-    std::stringstream ss;
-    ss << "" << idPiece << "-" << date;
-    std::string dossier = ss.str();
+
+ //   std::stringstream ss;
+  //  ss << "" << idPiece << "-" << date;
+    std::string dossier = "www/"+ idPiece + "_" + date ;  
     system(("mkdir " + dossier).c_str());
     std::string requete = "INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('" + std::string(date) + "','" + dossier + "','" + std::string(iPiece) + "')";
 
