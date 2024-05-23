@@ -9,7 +9,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-Class clientSocket{
+class clientSocket{
 private  :
 const char* ip;   
 int port;
