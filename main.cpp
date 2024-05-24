@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <string>
 #include <chrono>
+#include <cwiringPi.h>
 
 // Definition des pins Raspberry  
 #define	STEEP 12 // MOSI 

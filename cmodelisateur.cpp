@@ -67,8 +67,7 @@ int Cmodelisateur::ecrireDB(const char *requete)
 // Méthode pour déplacer le moteur pas à pas
 void Cmodelisateur::deplacerMot(int nbpas, int dir)
 {
-    wiringPisetup();
-
+ 
     pinMode(this->pinSteep, OUTPUT);
     pinMode(DIR, OUTPUT);
     digitalWrite(this->pinDirection, dir);
