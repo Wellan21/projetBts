@@ -1,7 +1,7 @@
-//clientSocket.h 
-// Marcoux Tristan Avril 2024 
-#ifndef clientSocket
-#define clientSocket 
+// clientSocket.h
+// Marcoux Tristan Avril 2024
+#ifndef CLIENTSOCKET_H
+#define CLIENTSOCKET_H
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -9,14 +9,18 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-class clientSocket{
-private  :
-const char* ip;   
-int port;
-public : 
-bool envoyerMessage(const char* msg); 
-clientSocket(const char ipSrv , int portsrv)
-clientSocket()
-}
+#include <string>
 
-#endif 
+class clientSocket {
+private:
+    std::string ip;
+    int port;
+
+public:
+    clientSocket(const char* ipSrv, int portSrv); // Constructor with parameters
+    clientSocket(); // Default constructor
+
+    bool envoyerMessage(const char* msg); // Member function
+};
+
+#endif // CLIENTSOCKET_H
