@@ -21,9 +21,6 @@ Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const cha
     pinMode(pinDirection, OUTPUT);
     pinMode(pinCapteur, INPUT);
 }
-nMode(this->pinCapteur, INPUT);
-}
-
 // // Méthode pour écrire dans la base de données SQLite
 // int Cmodelisateur::ecrireDB(const char *requete)
 // {
