@@ -8,7 +8,7 @@
 #include <math.h>
 
 // Constructeur
-Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char ip, int port)
+Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char ip, int port)
 {
     // Initialisation des attributs de la classe
     this->pinCapteur = pinCapteur;
