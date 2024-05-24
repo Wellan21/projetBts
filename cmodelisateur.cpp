@@ -17,9 +17,11 @@ Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const cha
       client(clientSocket(ip, port)) // Assuming clientSocket is a class with a suitable constructor
 {
     // Configuration des broches
+    wiringPisetup();
     pinMode(pinSteep, OUTPUT);
     pinMode(pinDirection, OUTPUT);
     pinMode(pinCapteur, INPUT);
+    
 }
 /// Méthode pour écrire dans la base de données SQLite
 int Cmodelisateur::ecrireDB(const char *requete)
