@@ -17,9 +17,9 @@ Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const cha
       client(clientSocket(ip, port)) // Assuming clientSocket is a class with a suitable constructor
 {
     // Configuration des broches
-    pinMode(this->pinSteep, OUTPUT);
-    pinMode(this->pinDirection, OUTPUT);
-    pinMode(this->pinCapteur, INPUT);
+    pinMode(pinSteep, OUTPUT);
+    pinMode(pinDirection, OUTPUT);
+    pinMode(pinCapteur, INPUT);
 }
 nMode(this->pinCapteur, INPUT);
 }
