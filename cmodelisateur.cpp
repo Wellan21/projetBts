@@ -8,7 +8,7 @@
 #include <cmath> // Use <cmath> instead of <math.h> in C++
 
 Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char* ip, int port)
-    : pinCapteur(pinCapteur),
+    : pinCapteur(pinCapteur),cd 
       pinSteep(pinSteep),
       pinDirection(pinDir),
       pathDB(pathDB),
