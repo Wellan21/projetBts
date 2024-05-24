@@ -21,48 +21,47 @@ Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const cha
     pinMode(pinDirection, OUTPUT);
     pinMode(pinCapteur, INPUT);
 }
-// // Méthode pour écrire dans la base de données SQLite
-// int Cmodelisateur::ecrireDB(const char *requete)
-// {
-//     sqlite3 *db;
-//     char *errMsg = 0;
+/// Méthode pour écrire dans la base de données SQLite
+int Cmodelisateur::ecrireDB(const char *requete)
+{
+    sqlite3 *db;
+    char *errMsg = 0;
 
-//     // Ouverture de la base de données
-//     int rc = sqlite3_open("BDD_demonstrateur.db", &db);
+    // Ouverture de la base de données
+    int rc = sqlite3_open("BDD_demonstrateur.db", &db);
 
-//     if (rc)
-//     {
-//         std::cerr << "Impossible d'ouvrir la base de données : " << sqlite3_errmsg(db) << std::endl;
-//         return 0;
-//     }
-//     else
-//     {
-//         std::cout << "Base de données ouverte avec succès" << std::endl;
-//     }
+    if (rc)
+    {
+        std::cerr << "Impossible d'ouvrir la base de données : " << sqlite3_errmsg(db) << std::endl;
+        return 0;
+    }
+    else
+    {
+        std::cout << "Base de données ouverte avec succès" << std::endl;
+    }
 
-//     // Requête SQL pour créer une table
-//     char createTableSQL[] = "INSERT INTO Campagne__de_photo (date, Chemin_d_acces,id_Piece) VALUES ('03/04/2024','/test',9)";
+    // Requête SQL pour créer une table
+    char createTableSQL[] = "INSERT INTO Campagne__de_photo (date, Chemin_d_acces,id_Piece) VALUES ('03/04/2024','/test',9)";
 
-//     // Exécution de la requête SQL
-//     rc = sqlite3_exec(db, createTableSQL, 0, 0, &errMsg);
+    // Exécution de la requête SQL
+    rc = sqlite3_exec(db, createTableSQL, 0, 0, &errMsg);
 
-//     if (rc != SQLITE_OK)
-//     {
-//         std::cerr << "Erreur SQL : " << errMsg << std::endl;
-//         sqlite3_free(errMsg);
-//         // Fermeture de la base de données
-//         sqlite3_close(db);
-//         return 1;
-//     }
-//     else
-//     {
-//         std::cout << "Table créée avec succès" << std::endl;
-//         // Fermeture de la base de données
-//         sqlite3_close(db);
-//         return 0;
-//     }
-// }
-
+    if (rc != SQLITE_OK)
+    {
+        std::cerr << "Erreur SQL : " << errMsg << std::endl;
+        sqlite3_free(errMsg);
+        // Fermeture de la base de données
+        sqlite3_close(db);
+        return 1;
+    }
+    else
+    {
+        std::cout << "Table créée avec succès" << std::endl;
+        // Fermeture de la base de données
+        sqlite3_close(db);
+        return 0;
+    }
+}
 // // Méthode pour déplacer le moteur pas à pas
 // void Cmodelisateur::deplacerMot(int nbpas, int dir)
 // {
