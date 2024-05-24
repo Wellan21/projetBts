@@ -5,10 +5,10 @@ CXX = g++
 CXXFLAGS = -Wall -g
 
 # Source files
-SRCS = clientSocket.cpp cmodelisteur.cpp main.cpp
+SRCS = clientSocket.cpp cmodelisateur.cpp main.cpp
 
 # Header files
-HDRS = clientSocket.h cmodelisteur.h
+HDRS = clientSocket.h cmodelisateur.h
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
