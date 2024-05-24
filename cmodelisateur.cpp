@@ -62,35 +62,35 @@ int Cmodelisateur::ecrireDB(const char *requete)
         return 0;
     }
 }
-// // Méthode pour déplacer le moteur pas à pas
-// void Cmodelisateur::deplacerMot(int nbpas, int dir)
-// {
-//     wiringPisetup();
+// Méthode pour déplacer le moteur pas à pas
+void Cmodelisateur::deplacerMot(int nbpas, int dir)
+{
+    wiringPisetup();
 
-//     pinMode(this->pinSteep, OUTPUT);
-//     pinMode(DIR, OUTPUT);
-//     digitalWrite(this->pinDirection, dir);
-//     for (int i = 0; i < nbpas; i++)
-//     {
-//         digitalWrite(this->pinSteep, HIGH); // Activé
-//         delay(5);                           //
-//         digitalWrite(this->pinSteep, LOW);  // Désactivé
-//         delay(5);
-//     }
-//     return;
-// }
+    pinMode(this->pinSteep, OUTPUT);
+    pinMode(DIR, OUTPUT);
+    digitalWrite(this->pinDirection, dir);
+    for (int i = 0; i < nbpas; i++)
+    {
+        digitalWrite(this->pinSteep, HIGH); // Activé
+        delay(5);                           //
+        digitalWrite(this->pinSteep, LOW);  // Désactivé
+        delay(5);
+    }
+    return;
+}
 
-// // Méthode pour initialiser le système
-// int Cmodelisateur::initSys()
-// {
-//     while (digitalRead(this->pinCapteur))
-//     {
-//         digitalWrite(this->pinSteep, HIGH); // Activé
-//         delay(5);                           //
-//         digitalWrite(this->pinSteep, LOW);  // Désactivé
-//         delay(5);
-//     }
-// }
+// Méthode pour initialiser le système
+int Cmodelisateur::initSys()
+{
+    while (digitalRead(this->pinCapteur))
+    {
+        digitalWrite(this->pinSteep, HIGH); // Activé
+        delay(5);                           //
+        digitalWrite(this->pinSteep, LOW);  // Désactivé
+        delay(5);
+    }
+}
 
 // // Méthode pour envoyer une requête via un socket
 // int Cmodelisateur::envoiRequeteSocket(const char *requete)
