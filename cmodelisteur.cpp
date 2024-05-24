@@ -1,27 +1,27 @@
 // cmodelisateur.cpp
 // Marcoux Tristan Avril 2024
-#include "cmodelisteur.h"
+#include "cmodelisateur.h"
 #include <wiringPi.h>
 #include <string>
 #include <sstream>
 #include <cstdlib>
-#include <math.h>
+#include <cmath> // Use <cmath> instead of <math.h> in C++
 
-// Constructeur
-Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char ip, int port)
+Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char* ip, int port)
+    : pinCapteur(pinCapteur),
+      pinSteep(pinSteep),
+      pinDirection(pinDir),
+      pathDB(pathDB),
+      nbPasMaxRasp(nbPasMaxRasp),
+      nbPasMaxEsp(nbPasMaxEsp),
+      client(clientSocket(ip, port)) // Assuming clientSocket is a class with a suitable constructor
 {
-    // Initialisation des attributs de la classe
-    this->pinCapteur = pinCapteur;
-    this->pinSteep = pinSteep;
-    this->pinDirection = pinDir;
-    this->pathDB = pathDB;
-    this->nbPasMaxEsp = nbPasMaxEsp;
-    this->nbPasMaxRasp = nbPasMaxRasp;
-    this->client = clientSocket(ip, port)
-        // Configuration des broches
-        pinMode(this->pinSteep, OUTPUT);
+    // Configuration des broches
+    pinMode(this->pinSteep, OUTPUT);
     pinMode(this->pinDirection, OUTPUT);
     pinMode(this->pinCapteur, INPUT);
+}
+nMode(this->pinCapteur, INPUT);
 }
 
 // // Méthode pour écrire dans la base de données SQLite
