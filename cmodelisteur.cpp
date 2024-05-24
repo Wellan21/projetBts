@@ -1,7 +1,7 @@
 // cmodelisateur.cpp
 // Marcoux Tristan Avril 2024
 
-#include "cmodelisateur.h"
+#include "cmodelisteur.h"
 #include <wiringPi.h>
 #include <string>
 #include <sstream>
