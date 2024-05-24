@@ -1,6 +1,6 @@
 // main.cpp 
 // Marcoux Tristan Avril 2024 
-#include "cmodelisteur.h" 
+#include "cmodelisateur.h" 
 #include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
