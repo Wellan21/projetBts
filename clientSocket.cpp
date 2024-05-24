@@ -1,8 +1,8 @@
 #include "clientSocket.h"
-#include <arpa/inet.h> // for inet_addr
-#include <unistd.h> // for close, write, read
-#include <cstring> // for strcpy
-#include <iostream> // for perror
+#include <arpa/inet.h> 
+#include <unistd.h> 
+#include <cstring> 
+#include <iostream> 
 
 clientSocket::clientSocket(const char* ipSrv, int portSrv) {
     this->ip = std::string(ipSrv);
@@ -18,7 +18,6 @@ bool clientSocket::envoyerMessage(const char* msg) {
     int sockfd_client;
     struct sockaddr_in adresse;
     int resultat;
-    char ch = 'X';
 
     sockfd_client = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd_client == -1) {
