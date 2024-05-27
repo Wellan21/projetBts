@@ -1,35 +1,38 @@
-# Compiler
+# Compilateur
 CXX = g++
 
-# Compiler flags
+# Options de compilation
 CXXFLAGS = -Wall -g
 
-# Source files
+# Options de l'éditeur de liens
+LDFLAGS = -lwiringPi -lsqlite3
+
+# Fichiers source
 SRCS = clientSocket.cpp cmodelisateur.cpp main.cpp
 
-# Header files
+# Fichiers d'en-tête
 HDRS = clientSocket.h cmodelisateur.h
 
-# Object files
+# Fichiers objets
 OBJS = $(SRCS:.cpp=.o)
 
-# Executable name
+# Nom de l'exécutable
 EXEC = demonstrateur
 
-# Default target
+# Cible par défaut
 all: $(EXEC)
 
-# Link object files to create executable
+# Lier les fichiers objets pour créer l'exécutable
 $(EXEC): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-# Compile source files into object files
+# Compiler les fichiers source en fichiers objets
 %.o: %.cpp $(HDRS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean target to remove compiled files
+# Cible de nettoyage pour supprimer les fichiers compilés
 clean:
 	rm -f $(OBJS) $(EXEC)
 
-# Phony targets
+# Cibles fictives (phony) pour éviter les conflits avec des fichiers du même nom
 .PHONY: all clean
