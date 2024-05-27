@@ -64,7 +64,7 @@ int Cmodelisateur::ecrireDB(const char *requete)
     }
 }
 // Méthode pour déplacer le moteur pas à pas
-void Cmodelisateur::deplacerMot(int nbpas, int dir)
+bool Cmodelisateur::deplacerMot(int nbpas, int dir)
 {
 
     pinMode(this->pinSteep, OUTPUT);
@@ -77,7 +77,7 @@ void Cmodelisateur::deplacerMot(int nbpas, int dir)
         digitalWrite(this->pinSteep, LOW);  // Désactivé
         delay(5);
     }
-    return;
+    return true;
 }
 
 // Méthode pour initialiser le système
@@ -128,7 +128,7 @@ int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
     dossier.append("_");  
     dossier.append(date);
     system((string("mkdir ") + dossier).c_str());
-    string requete = string("INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('") + string(date) + string("','") + dossier + string ("','") + string(iPiece) + string("')");
+    string requete = string("INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('") + string(date) + string("','") + dossier + string ("','") + string(idPiece) + string("')");
     cout<<requete<<endl; 
 
     // Appel de la méthode ecrireDB avec la chaîne de requête
@@ -169,7 +169,7 @@ int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
                         posEsp = j;
                         // Met à jour la position actuelle de l'ESP.
 
-                        if (prendrePhoto((dossier + string("/") + to_string(cpt)).c_str()))
+                        if (prendrePhoto(dossier + string("/") + to_string(cpt)))
                         // Prend une photo et l'enregistre dans le dossier spécifié avec un compteur.
                         {
                             cpt++;
@@ -202,9 +202,9 @@ int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
             }
         }
     }
-}
+
 else
 {
     return 0;
 }
-
+}

@@ -18,7 +18,7 @@ private:
     int nbPasMaxRasp;
     int nbPasMaxEsp;
     int ecrireDB(const char* requete);
-    void deplacerMot(int nbpas, int dir); 
+    bool deplacerMot(int nbpas, int dir); 
     int envoiRequeteSocket(const char* requete); 
     int initSys(); 
     int prendrePhoto(std::string* nomPhoto);
