@@ -93,16 +93,16 @@ int Cmodelisateur::initSys()
     }
 }
 
-// // Méthode pour envoyer une requête via un socket
-// int Cmodelisateur::envoiRequeteSocket(const char *requete)
-// {
-//     return client.envoiMess(requete);
-// }
-// int Cmodelisateur : prendrePhoto(std::string *nomphoto)
-// {
-//     string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test" + nomPhoto + ".jpg";
-//     return system(command.c_str());
-// }
+// Méthode pour envoyer une requête via un socket
+int Cmodelisateur::envoiRequeteSocket(const char *requete)
+{
+    return client.envoiMess(requete);
+}
+int Cmodelisateur : prendrePhoto(std::string *nomphoto)
+{
+    string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test" + nomPhoto + ".jpg";
+    return system(command.c_str());
+}
 
 // // Méthode pour initialiser le système et envoyer une requête
 // int Cmodelisateur::init()
