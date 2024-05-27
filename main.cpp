@@ -21,7 +21,7 @@
 #define PASRASP 512 //nombre de pas max Raspberry 
 #define PASESP  512 // Nombre de pas max esp32 
 #define IP "192.168.129.43" // ip ESP32
-#define PORT 554 // port serveur ESP32 
+#define PORT 8080 // port serveur ESP32 
 
 using namespace std;
 
