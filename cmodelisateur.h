@@ -21,7 +21,7 @@ private:
     void deplacerMot(int nbpas, int dir); 
     int envoiRequeteSocket(const char* requete); 
     int initSys(); 
-    int prendrePhoto(std::string* nomphoto);
+    int prendrePhoto(std::string* nomPhoto);
     
 public: 
     int init(); 

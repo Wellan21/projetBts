@@ -96,9 +96,9 @@ int Cmodelisateur::initSys()
 // Méthode pour envoyer une requête via un socket
 int Cmodelisateur::envoiRequeteSocket(const char *requete)
 {
-    return client.envoiMessage(requete);
+    return client.envoyerMessage(requete);
 }
-int Cmodelisateur :: prendrePhoto(std::string *nomphoto)
+int Cmodelisateur :: prendrePhoto(std::string *nomPhoto)
 {
     std::string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test" + nomPhoto + ".jpg";
     return system(commande.c_str());
