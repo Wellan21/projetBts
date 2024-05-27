@@ -106,18 +106,18 @@ int Cmodelisateur ::prendrePhoto(std::string *nomPhoto)
     return system(commande.c_str());
 }
 
-// // Méthode pour initialiser le système et envoyer une requête
-// int Cmodelisateur::init()
-// {
-//     if (initSys() && envoiRequeteSocket("i"))
-//     {
-//         return 1;
-//     }
-//     else
-//     {
-//         return 0;
-//     }
-// }
+// Méthode pour initialiser le système et envoyer une requête
+int Cmodelisateur::init()
+{
+    if (initSys() && envoiRequeteSocket("i"))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 // // Méthode pour réaliser une campagne de photos
 // int Cmodelisateur::camp(int nbImage, const char *idPiece, const char *date)
