@@ -15,7 +15,6 @@ bool clientSocket::envoyerMessage(const char* msg) {
     int sockfd_client;
     struct sockaddr_in adresse;
     int resultat;
-    char ch = 'X';
 
     sockfd_client = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd_client == -1) {
@@ -36,10 +35,10 @@ bool clientSocket::envoyerMessage(const char* msg) {
         return false;
     }
 
-    write(sockfd_client, &ch, 1);
+    write(sockfd_client, &msg, strlen(msg),0);
     read(sockfd_client, &ch, 1);
 
-    if (ch == '1') {
+    if (ch == 1) {
         close(sockfd_client);
         return true;
     } else {
