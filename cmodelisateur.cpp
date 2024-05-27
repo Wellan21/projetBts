@@ -69,7 +69,7 @@ void Cmodelisateur::deplacerMot(int nbpas, int dir)
 {
  
     pinMode(this->pinSteep, OUTPUT);
-    pinMode(DIR, OUTPUT);
+    pinMode(dir, OUTPUT);
     digitalWrite(this->pinDirection, dir);
     for (int i = 0; i < nbpas; i++)
     {
