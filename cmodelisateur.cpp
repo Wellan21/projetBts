@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <cmath> // Use <cmath> instead of <math.h> in C++
 
-Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char* ip, int port)
+Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char *pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char *ip, int port)
     : pinCapteur(pinCapteur),
       pinSteep(pinSteep),
       pinDirection(pinDir),
@@ -17,11 +17,10 @@ Cmodelisateur::Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const cha
       client(clientSocket(ip, port)) // Assuming clientSocket is a class with a suitable constructor
 {
     // Configuration des broches
-    wiringPiSetup() ;
+    wiringPiSetup();
     pinMode(pinSteep, OUTPUT);
     pinMode(pinDirection, OUTPUT);
     pinMode(pinCapteur, INPUT);
-    
 }
 /// Méthode pour écrire dans la base de données SQLite
 int Cmodelisateur::ecrireDB(const char *requete)
@@ -67,7 +66,7 @@ int Cmodelisateur::ecrireDB(const char *requete)
 // Méthode pour déplacer le moteur pas à pas
 void Cmodelisateur::deplacerMot(int nbpas, int dir)
 {
- 
+
     pinMode(this->pinSteep, OUTPUT);
     pinMode(dir, OUTPUT);
     digitalWrite(this->pinDirection, dir);
@@ -98,9 +97,12 @@ int Cmodelisateur::envoiRequeteSocket(const char *requete)
 {
     return client.envoyerMessage(requete);
 }
-int Cmodelisateur :: prendrePhoto(std::string *nomPhoto)
+int Cmodelisateur ::prendrePhoto(std::string *nomPhoto)
 {
-    std::string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test" + nomPhoto + ".jpg";
+    std::string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test";
+    commande.append(*nomPhoto);
+    commande.append(".jpg");
+
     return system(commande.c_str());
 }
 
