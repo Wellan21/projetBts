@@ -157,13 +157,13 @@ int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
             posEsp = 0;
             // Réinitialiser la position de l'ESP.
 
-            if (this->deplacerMot(i, 1);)
+            if (this->deplacerMot(i, 1))
             // Vérifie si le déplacement du dispositif Raspberry Pi est réussi.
             {
                 for (int j = 0; j < (nbPasMaxEsp - intervalleEsp); j += intervalleEsp)
                 // Boucle pour déplacer l'ESP à des intervalles réguliers.
                 {
-                    if (this->envoiRequeteSocket((string("p.") + to_string(j) + string(".1")).c_str());)
+                    if (this->envoiRequeteSocket((string("p.") + to_string(j) + string(".1")).c_str()))
                     // Envoie une requête pour déplacer l'ESP.
                     {
                         posEsp = j;
@@ -195,7 +195,7 @@ int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
             }
 
             // Ajouter retour ESP à sa position initiale
-            if (!(this->envoiRequeteSocket((string("p.") + to_string(posEsp) + string(".0")).c_str());))
+            if (!(this->envoiRequeteSocket((string("p.") + to_string(posEsp) + string(".0")).c_str())))
             {
                 return 4;
                 // Retourne 4 si l'ESP ne peut pas être retourné à sa position initiale.
