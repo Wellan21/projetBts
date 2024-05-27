@@ -101,7 +101,7 @@ int Cmodelisateur::envoiRequeteSocket(const char *requete)
 int Cmodelisateur :: prendrePhoto(std::string *nomphoto)
 {
     std::string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test" + nomPhoto + ".jpg";
-    return system(command.c_str());
+    return system(commande.c_str());
 }
 
 // // Méthode pour initialiser le système et envoyer une requête
