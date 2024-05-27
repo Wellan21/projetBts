@@ -119,88 +119,88 @@ int Cmodelisateur::init()
     }
 }
 
-// // Méthode pour réaliser une campagne de photos
-// int Cmodelisateur::camp(int nbImage, const char *idPiece, const char *date)
-// {
+// Méthode pour réaliser une campagne de photos
+int Cmodelisateur::camp(int nbImage, const char *idPiece, const char *date)
+{
 
-//     std::string dossier = "www/" + idPiece + "_" + date;
-//     system(("mkdir " + dossier).c_str());
-//     std::string requete = "INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('" + std::string(date) + "','" + dossier + "','" + std::string(iPiece) + "')";
+    std::string dossier = "www/" + idPiece + "_" + date;
+    system(("mkdir " + dossier).c_str());
+    std::string requete = "INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('" + std::string(date) + "','" + dossier + "','" + std::string(iPiece) + "')";
 
-//     // Appel de la méthode ecrireDB avec la chaîne de requête
-//     this->ecrireDB(requete.c_str());
+    // Appel de la méthode ecrireDB avec la chaîne de requête
+    this->ecrireDB(requete.c_str());
 
-//     if (init())
-//     {
-//         int nbdeplacement = int(floor(sqrt(nbimg)));
-//         // Calcul du nombre de déplacements en prenant la racine carrée du nombre d'images.
+    if (init())
+    {
+        int nbdeplacement = int(floor(sqrt(nbimg)));
+        // Calcul du nombre de déplacements en prenant la racine carrée du nombre d'images.
 
-//         int intervalleRasp = int(floor(nbPasMaxRasp / nbdeplacement));
-//         // Calcul de l'intervalle entre les déplacements pour Raspberry Pi en divisant nbPasMaxRasp par nbdeplacement.
+        int intervalleRasp = int(floor(nbPasMaxRasp / nbdeplacement));
+        // Calcul de l'intervalle entre les déplacements pour Raspberry Pi en divisant nbPasMaxRasp par nbdeplacement.
 
-//         int intervalleEsp = int(floor(nbPasMaxEsp / nbdeplacement));
-//         // Calcul de l'intervalle entre les déplacements pour ESP (un autre dispositif) en divisant nbPasMaxEsp par nbdeplacement.
+        int intervalleEsp = int(floor(nbPasMaxEsp / nbdeplacement));
+        // Calcul de l'intervalle entre les déplacements pour ESP (un autre dispositif) en divisant nbPasMaxEsp par nbdeplacement.
 
-//         int cpt = 0;
-//         // Compteur pour le nombre de photos prises.
+        int cpt = 0;
+        // Compteur pour le nombre de photos prises.
 
-//         int posEsp;
-//         // Variable pour garder la position actuelle de l'ESP.
+        int posEsp;
+        // Variable pour garder la position actuelle de l'ESP.
 
-//         for (int i = 0; i < (nbpasmax); i += intervalleRasp)
-//         // Boucle pour déplacer le dispositif Raspberry Pi à des intervalles réguliers.
-//         {
-//             posEsp = 0;
-//             // Réinitialiser la position de l'ESP.
+        for (int i = 0; i < (nbpasmax); i += intervalleRasp)
+        // Boucle pour déplacer le dispositif Raspberry Pi à des intervalles réguliers.
+        {
+            posEsp = 0;
+            // Réinitialiser la position de l'ESP.
 
-//             if (this->deplacerMot(i, 1);)
-//             // Vérifie si le déplacement du dispositif Raspberry Pi est réussi.
-//             {
-//                 for (int j = 0; j < (nbpasmax - intervalle); j += intervalleEsp)
-//                 // Boucle pour déplacer l'ESP à des intervalles réguliers.
-//                 {
-//                     if (this->envoiRequeteSocket(("p." + std::to_string(j) + ".1").c_str());)
-//                     // Envoie une requête pour déplacer l'ESP.
-//                     {
-//                         posEsp = j;
-//                         // Met à jour la position actuelle de l'ESP.
+            if (this->deplacerMot(i, 1);)
+            // Vérifie si le déplacement du dispositif Raspberry Pi est réussi.
+            {
+                for (int j = 0; j < (nbpasmax - intervalle); j += intervalleEsp)
+                // Boucle pour déplacer l'ESP à des intervalles réguliers.
+                {
+                    if (this->envoiRequeteSocket(("p." + std::to_string(j) + ".1").c_str());)
+                    // Envoie une requête pour déplacer l'ESP.
+                    {
+                        posEsp = j;
+                        // Met à jour la position actuelle de l'ESP.
 
-//                         if (this->prendrePhoto((dossier + "/" + cpt).c_str()))
-//                         // Prend une photo et l'enregistre dans le dossier spécifié avec un compteur.
-//                         {
-//                             cpt++;
-//                             // Incrémente le compteur de photos.
-//                         }
-//                         else
-//                         {
-//                             return 3;
-//                             // Retourne 3 si la prise de photo échoue.
-//                         }
-//                     }
-//                     else
-//                     {
-//                         return 2;
-//                         // Retourne 2 si l'envoi de la requête de déplacement de l'ESP échoue.
-//                     }
-//                 }
-//             }
-//             else
-//             {
-//                 return 1;
-//                 // Retourne 1 si le déplacement du dispositif Raspberry Pi échoue.
-//             }
+                        if (this->prendrePhoto((dossier + "/" + cpt).c_str()))
+                        // Prend une photo et l'enregistre dans le dossier spécifié avec un compteur.
+                        {
+                            cpt++;
+                            // Incrémente le compteur de photos.
+                        }
+                        else
+                        {
+                            return 3;
+                            // Retourne 3 si la prise de photo échoue.
+                        }
+                    }
+                    else
+                    {
+                        return 2;
+                        // Retourne 2 si l'envoi de la requête de déplacement de l'ESP échoue.
+                    }
+                }
+            }
+            else
+            {
+                return 1;
+                // Retourne 1 si le déplacement du dispositif Raspberry Pi échoue.
+            }
 
-//             // Ajouter retour ESP à sa position initiale
-//             if (!(this->envoiRequeteSocket(("p." + std::to_string(posEsp) + ".0").c_str());))
-//             {
-//                 return 4;
-//                 // Retourne 4 si l'ESP ne peut pas être retourné à sa position initiale.
-//             }
-//         }
-//     }
-// }
-// else
-// {
-//     return 0;
-// }
-// }
+            // Ajouter retour ESP à sa position initiale
+            if (!(this->envoiRequeteSocket(("p." + std::to_string(posEsp) + ".0").c_str());))
+            {
+                return 4;
+                // Retourne 4 si l'ESP ne peut pas être retourné à sa position initiale.
+            }
+        }
+    }
+}
+else
+{
+    return 0;
+}
+}
