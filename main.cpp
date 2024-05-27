@@ -118,7 +118,7 @@ int main() {
                     std::cout << "Commande vide ou invalide reçue." << std::endl;
                 }
             }
-            write(sockfd_service, &type, sizeof(type)); // Envoie le type de réponse au client.
+            write(sockfd_service, &resultat, sizeof(resultat)); // Envoie le type de réponse au client.
         } else {
             std::cout << "Erreur lors de la réception de la chaîne de caractères." << std::endl;
             char error = '0';
