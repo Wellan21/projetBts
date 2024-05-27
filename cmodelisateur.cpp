@@ -89,12 +89,14 @@ int Cmodelisateur::initSys()
         delay(5);                           //
         digitalWrite(this->pinSteep, LOW);  // Désactivé
         delay(5);
+	cout<<"test"<<endl;
     }
+	return 1; 
 }
 
 // Méthode pour envoyer une requête via un socket
 int Cmodelisateur::envoiRequeteSocket(const char *requete)
-{
+{	cout<<requete<<endl;
     return client.envoyerMessage(requete);
 }
 int Cmodelisateur ::prendrePhoto(string nomPhoto)
@@ -110,11 +112,11 @@ int Cmodelisateur ::prendrePhoto(string nomPhoto)
 int Cmodelisateur::init()
 {
     if (initSys() && envoiRequeteSocket("i"))
-    {
+    {	cout<<"init ok."<<endl; 
         return 1;
     }
     else
-    {
+    { cout<<"un pb"<<endl;
         return 0;
     }
 }
