@@ -97,10 +97,10 @@ int Cmodelisateur::envoiRequeteSocket(const char *requete)
 {
     return client.envoyerMessage(requete);
 }
-int Cmodelisateur ::prendrePhoto(string *nomPhoto)
+int Cmodelisateur ::prendrePhoto(string nomPhoto)
 {
     string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 test/test";
-    commande.append(*nomPhoto);
+    commande.append(nomPhoto);
     commande.append(".jpg");
 
     return system(commande.c_str());
@@ -123,7 +123,7 @@ int Cmodelisateur::init()
 int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
 {
 
-    string dossier = "www/"; 
+    string dossier = "projet/"; 
     dossier.append( idPiece); 
     dossier.append("_");  
     dossier.append(date);
