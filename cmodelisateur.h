@@ -25,7 +25,7 @@ private:
     
 public: 
     int init(); 
-    int camp(int nbImage, const char* idPiece, const char* date); 
+    char camp(int nbImage, const char* idPiece, const char* date); 
     Cmodelisateur(int pinCapteur, int pinSteep, int pinDir, const char* pathDB, int nbPasMaxRasp, int nbPasMaxEsp, const char* ip, int port);
 };
 

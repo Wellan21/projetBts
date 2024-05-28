@@ -124,7 +124,7 @@ int Cmodelisateur::init()
 }
 
 // Méthode pour réaliser une campagne de photos 
-int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
+char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
 {
 
     string dossier = ""; 
