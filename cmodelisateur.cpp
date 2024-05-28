@@ -106,7 +106,7 @@ int Cmodelisateur ::prendrePhoto(string nomPhoto)
     string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1";
     commande.append(nomPhoto);
     commande.append(".jpg");
-
+    cout<<commande<<endl;
     return system(commande.c_str());
 }
 
