@@ -97,7 +97,9 @@ int Cmodelisateur::initSys()
 // Méthode pour envoyer une requête via un socket
 int Cmodelisateur::envoiRequeteSocket(const char *requete)
 {	cout<<requete<<endl;
-    return client.envoyerMessage(requete);
+    bool result =  client.envoyerMessage(requete)
+    cout<<result<<endl; 
+    return result; 
 }
 int Cmodelisateur ::prendrePhoto(string nomPhoto)
 {
@@ -159,13 +161,13 @@ int Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
             posEsp = 0;
             // Réinitialiser la position de l'ESP.
 
-            if (deplacerMot(i, 1))
+            if (deplacerMot(intervalleRasp, 1))
             // Vérifie si le déplacement du dispositif Raspberry Pi est réussi.
             {
                 for (int j = 0; j < (nbPasMaxEsp - intervalleEsp); j += intervalleEsp)
                 // Boucle pour déplacer l'ESP à des intervalles réguliers.
                 {
-                    if (envoiRequeteSocket((string("p.") + to_string(j) + string(".1")).c_str()))
+                    if (envoiRequeteSocket((string("p.") + to_string(intervalleRasp) + string(".1")).c_str()))
                     // Envoie une requête pour déplacer l'ESP.
                     {
                         posEsp = j;

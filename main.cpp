@@ -16,7 +16,7 @@
 // Definition des pins Raspberry  
 #define	STEEP 12 // MOSI 
 #define	DIR	11 // CE1
-#define CAPTEUR 17
+#define CAPTEUR 17 
 #define DB "BDD_demonstrateur.db" //Chemin d'accès BDD 
 #define PASRASP 512 //nombre de pas max Raspberry 
 #define PASESP  512 // Nombre de pas max esp32 
