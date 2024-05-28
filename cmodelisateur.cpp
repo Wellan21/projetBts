@@ -57,7 +57,7 @@ int Cmodelisateur::ecrireDB(const char *requete)
     }
     else
     {
-        cout << "Table créée avec succès" << endl;
+        cout << "requête effectuée  avec succès" << endl;
         // Fermeture de la base de données
         sqlite3_close(db);
         return 0;
@@ -107,7 +107,7 @@ int Cmodelisateur ::prendrePhoto(string nomPhoto)
     commande.append(nomPhoto);
     commande.append(".jpg");
     cout<<commande<<endl;
-    return system(commande.c_str());
+    return !(system(commande.c_str()));
 }
 
 // Méthode pour initialiser le système et envoyer une requête
