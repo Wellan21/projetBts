@@ -97,7 +97,7 @@ int Cmodelisateur::initSys()
 // Méthode pour envoyer une requête via un socket
 int Cmodelisateur::envoiRequeteSocket(const char *requete)
 {	cout<<requete<<endl;
-    bool result =  client.envoyerMessage(requete)
+    bool result =  client.envoyerMessage(requete);
     cout<<result<<endl; 
     return result; 
 }
