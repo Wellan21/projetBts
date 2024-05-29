@@ -30,7 +30,7 @@ int Cmodelisateur::ecrireDB(const char *requete)
     char *errMsg = 0;
 
     // Ouverture de la base de données
-    int rc = sqlite3_open("pathDB", &db);
+    int rc = sqlite3_open(pathDB, &db);
 
     if (rc)
     {
