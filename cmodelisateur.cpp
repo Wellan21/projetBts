@@ -127,7 +127,7 @@ int Cmodelisateur::init()
 char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
 {
 
-    string dossier = ""; 
+    string dossier = "projets/"; 
     dossier.append( idPiece); 
     dossier.append("_");  
     dossier.append(date);
