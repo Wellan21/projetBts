@@ -96,7 +96,7 @@ int main() {
                                 std::cout << idPieceChar << std::endl;
                                 int tailleIdPiece = sizeof(idPieceChar)/sizeof(char);
                                 std::cout<<tailleIdPiece<< std::endl; 
-                                idPieceChar[tailleIdPiece-2] = '\0'; 
+                                idPieceChar[tailleIdPiece-1] = '\0'; 
                                 try {   // Convertit nbImgChar en entier.
                                     nbImgInt = std::stoi(nbImgChar);
                                 }

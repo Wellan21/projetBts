@@ -127,11 +127,11 @@ int Cmodelisateur::init()
 char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
 {
 
-    string dossier = "projets/"; 
+    string dossier = ""; 
     dossier.append( idPiece); 
     dossier.append("_");  
     dossier.append(date);
-    system((string("mkdir ") + dossier).c_str());
+    system((string("mkdir ") +string("projets/") dossier).c_str());
     string requete = string("INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('") + string(date) + string("','") + dossier + string ("','") + string(idPiece) + string("')");
     cout<<requete<<endl; 
 
@@ -173,7 +173,7 @@ char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
                         posEsp = j;
                         // Met à jour la position actuelle de l'ESP.
 
-                        if (prendrePhoto(dossier + string("/") + to_string(cpt)))
+                        if (prendrePhoto(string("projets/")+ dossier + string("/") + to_string(cpt)))
                         // Prend une photo et l'enregistre dans le dossier spécifié avec un compteur.
                         {
                             cpt++;
