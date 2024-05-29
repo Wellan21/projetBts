@@ -131,7 +131,7 @@ char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
     dossier.append( idPiece); 
     dossier.append("_");  
     dossier.append(date);
-    system((string("mkdir ") +string("projets/") dossier).c_str());
+    system((string("mkdir ") +string("projets/")+ dossier).c_str());
     string requete = string("INSERT INTO Campagne__de_photo (date, Chemin_d_acces, id_Piece) VALUES ('") + string(date) + string("','") + dossier + string ("','") + string(idPiece) + string("')");
     cout<<requete<<endl; 
 
