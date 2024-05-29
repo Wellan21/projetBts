@@ -17,7 +17,7 @@
 #define	STEEP 12 // MOSI 
 #define	DIR	11 // CE1
 #define CAPTEUR 17 
-#define DB "projets/BDD_demonstrateur.db" //Chemin d'accès BDD 
+#define DB "projets/BDD_demonstrateur3.db" //Chemin d'accès BDD 
 #define PASRASP 512 //nombre de pas max Raspberry 
 #define PASESP  512 // Nombre de pas max esp32 
 #define IP "192.168.129.43" // ip ESP32
