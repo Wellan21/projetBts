@@ -190,6 +190,11 @@ char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
                         return '2';
                         // Retourne 2 si l'envoi de la requête de déplacement de l'ESP échoue.
                     }
+                    if (!(this->envoiRequeteSocket((string("p.") + to_string(posEsp) + string(".0")).c_str())))
+            {
+                return '4';
+                // Retourne 4 si l'ESP ne peut pas être retourné à sa position initiale.
+            }
                 }
             }
             else
@@ -198,12 +203,7 @@ char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
                 // Retourne 1 si le déplacement du dispositif Raspberry Pi échoue.
             }
 
-            // Ajouter retour ESP à sa position initiale
-            if (!(this->envoiRequeteSocket((string("p.") + to_string(posEsp) + string(".0")).c_str())))
-            {
-                return '4';
-                // Retourne 4 si l'ESP ne peut pas être retourné à sa position initiale.
-            }
+        
         }
     }
 
