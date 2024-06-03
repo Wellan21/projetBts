@@ -103,11 +103,13 @@ int Cmodelisateur::envoiRequeteSocket(const char *requete)
 }
 int Cmodelisateur ::prendrePhoto(string nomPhoto)
 {
+    envoiRequeteSocket("L1")
     string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 ";
     commande.append(nomPhoto);
     commande.append(".jpg  > /dev/null 2>&1");
     cout<<commande<<endl;
     return !(system(commande.c_str()));
+    envoiRequeteSocket("L0")
 }
 
 // Méthode pour initialiser le système et envoyer une requête
@@ -164,6 +166,7 @@ char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
             if (deplacerMot(intervalleRasp, 1))
             // Vérifie si le déplacement du dispositif Raspberry Pi est réussi.
             {
+
                 for (int j = 0; j < (nbPasMaxEsp - intervalleEsp); j += intervalleEsp)
                 // Boucle pour déplacer l'ESP à des intervalles réguliers.
                 {
@@ -190,12 +193,13 @@ char Cmodelisateur::camp(int nbImage, const char * idPiece, const char *date)
                         return '2';
                         // Retourne 2 si l'envoi de la requête de déplacement de l'ESP échoue.
                     }
-                    if (!(this->envoiRequeteSocket((string("p.") + to_string(posEsp) + string(".0")).c_str())))
+                 
+                }
+                   if (!(this->envoiRequeteSocket((string("p.") + to_string(posEsp) + string(".0")).c_str())))
             {
                 return '4';
                 // Retourne 4 si l'ESP ne peut pas être retourné à sa position initiale.
             }
-                }
             }
             else
             {
