@@ -103,13 +103,14 @@ int Cmodelisateur::envoiRequeteSocket(const char *requete)
 }
 int Cmodelisateur ::prendrePhoto(string nomPhoto)
 {
-    envoiRequeteSocket("L1")
+    envoiRequeteSocket("L1");
     string commande = "ffmpeg -f v4l2 -video_size 1920x1080 -i /dev/video0 -frames 1 ";
     commande.append(nomPhoto);
     commande.append(".jpg  > /dev/null 2>&1");
     cout<<commande<<endl;
     return !(system(commande.c_str()));
-    envoiRequeteSocket("L0")
+    envoiRequeteSocket("L0"); 
+
 }
 
 // Méthode pour initialiser le système et envoyer une requête
